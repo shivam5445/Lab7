@@ -9,6 +9,7 @@ The Pipeline Datapath works in the following order of steps:
 
 We have used no-op conditions to avoid data hazards such as RAW (Read After Write) 
 We have based the pipeline on Harvard Architecture.
+
 Instruction Fetch (IF):
 We fetch the instruction from the instruction cache, and increment the program counter.
 We have two units:
@@ -18,6 +19,7 @@ Stage is finished.
 2. Instruction Cache - Stores the Instructions to be executed.
 a) In our code, the 8x32 bit cache file ‘icache’ is the instruction file, and each instruction is 
 accessed with address as the index.
+
 Instruction Decode (ID):
 We decode the instuctions, fetch the values stored in the register file and load them onto the 
 necessary registers.
@@ -33,6 +35,7 @@ a) It is stored with a 32x32 register file as ‘registers’
 2. Outputs – read_data1, read_data2
 4. Immediate Generator -
 a) Given the decoded imm, it forwards the immediate value
+
 Execution (EX):
 We run the ALU.
 We have two units.
@@ -50,6 +53,7 @@ based on the opcode and based on s, we perform addition/subtraction/multiplicati
 • For Addition, we have used Carry Look Ahead Adder;
 • For Subtraction, we have followed 2s complement system;
 • For Multiplication, we have followed the Booth’s Algorithm.
+
 Memory Read/Write (MEM):
 We read/write data into the data cache.
 We have two units:
@@ -58,6 +62,7 @@ a) In our code, we have used reg ‘preg3’ as pipeline register.
 2. Data Cache – temporarilary stores data for the operations
 a) inputs – output of the alu that is preg3[31:0]
 data stored in cache according to the given destination registor.
+
 Write Back (WB):
 Depending on whether the instruction is store or not, it writes back to the register file 
 We have two units:
