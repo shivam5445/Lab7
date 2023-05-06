@@ -6,6 +6,7 @@ The Pipeline Datapath works in the following order of steps:
 3. Execution (EX)
 4. Memory Read/Write (MEM)
 5. Write Back (WB)
+
 We have used no-op conditions to avoid data hazards such as RAW (Read After Write) 
 We have based the pipeline on Harvard Architecture.
 Instruction Fetch (IF):
