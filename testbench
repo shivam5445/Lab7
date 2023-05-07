@@ -1,18 +1,23 @@
+`timescale 1ns / 1ps
 module testbench ;                                                                                            
-    reg ld,clk;
-    wire   [31:0] read_data1 , read_data2, read_data3;
-    wire  [32:0] C;
-    wire  cout,overflow;                                
-    wire  [43:0] preg1;                    
-    wire  [97:0] preg2;
-    wire  [75:0] preg3;
-    wire  [75:0] preg4;
-    wire  [31:0] wr_data;
-   
-always #1 clk = ~clk ;    
-                                                                                   
+    reg ld;
+    reg clk;
+    wire [31:0] read_data1 , read_data2, read_data3;
+    wire [32:0] C;
+    wire cout,overflow;                                
+    wire [43:0] preg1;                    
+    wire [97:0] preg2;
+    wire [75:0] preg3;
+    wire [75:0] preg4;
+    wire [31:0] wr_data;
+always begin
+clk=0;
+forever #1 clk = ~clk;
+end                                                                                   
 lab_7_1 dut(.ld(ld),.clk(clk),.read_data1(read_data1),.read_data2(read_data2),.read_data3(read_data3),.C(C),.cout(cout),.overflow(overflow),.preg1(preg1),.preg2(preg2),.preg3(preg3),.preg4(preg4),.wr_data(wr_data)) ;                      
 initial begin                                                                                              
+    clk=0;
+    #10;
     clk = 12.5 ;      
 end                                                                                                        
 endmodule
